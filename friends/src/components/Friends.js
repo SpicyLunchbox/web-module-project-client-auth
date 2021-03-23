@@ -17,8 +17,9 @@ getData = () => {
     .then(res => {
         console.log(res);
         this.setState({
-            friends: res.data.data
-        })
+            friends: res.data
+        },() => console.log(this.state.friends))
+        
     })
     .catch(err => {
         console.log(`error: ${err}`)
@@ -29,7 +30,7 @@ render() {
     return (
         <div className='FriendComponent'>
             <h2>Here are your friends</h2>
-            {this.friends.map(friend => (
+            {this.state.friends.map(friend => (
                  <Friend friend={friend} />
             ))}
         </div>

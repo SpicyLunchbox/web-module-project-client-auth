@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import Login from './components/Login';
 import Friends from './components/Friends';
 import PrivateRoute from './components/PrivateRoute';
-import {axiosWithAuth} from './utils/axiosWithAuth';
+import AddFriend from './components/AddFriend';
 import './App.css';
 
 function App() {
@@ -19,9 +19,13 @@ function App() {
         <li>
           <Link to='/friends'>Private Friends</Link>
         </li>
+        <li>
+          <Link to='/addFriend'>Add a friend</Link>
+        </li>
       </ul>
       <Switch>
         <Route path='/login' component={Login} />
+        <Route path='/addFriend' component={AddFriend} />
         <PrivateRoute path='/friends' component={Friends} />
       </Switch>
     </div>

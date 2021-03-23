@@ -24,6 +24,7 @@ login = e => {
 
     axios.post('http://localhost:5000/api/login', this.state.credentials)
         .then(res => {
+            console.log(res)
             localStorage.setItem('token', res.data.payload)
             this.props.history.push('/friends');
         })
