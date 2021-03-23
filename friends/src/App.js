@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
+import Login from './components/Login';
+import Friends from './components/Friends';
+import PrivateRoute from './components/PrivateRoute';
+import {axiosWithAuth} from './utils/axiosWithAuth';
 import './App.css';
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Welcome to Friendbook</h1>
+      <p>A place to connect with the people you care about</p>
+      <ul>
+        <li>
+          <Link to='/login'>Lets get started</Link>
+        </li>
+        <li>
+          <Link to='/friends'>Private Friends</Link>
+        </li>
+      </ul>
+      <Switch>
+        <Route path='/login' component={Login} />
+        <PrivateRoute path='/friends' component={Friends} />
+      </Switch>
     </div>
+    </Router>
   );
 }
 
